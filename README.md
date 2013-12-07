@@ -8,4 +8,4 @@ Herausgekommen ist ein einfacher Installer für LibreOffice.
 Du kannst damit LibreOffice installieren und aktualisieren, vorausgesetzt, du lädst dir die
 aktuellen .tar.gz von http://de.libreoffice.org/download/ oder http://de.libreoffice.org/download/testversionen/ (Testing).
 
-Sieh' dir das Skirpt mal selbst an, um zu sehen, wie es funktioniert!
+Sieh' dir das Skirpt doch mal selbst an, um zu sehen, wie es funktioniert!
