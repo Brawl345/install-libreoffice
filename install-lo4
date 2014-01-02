@@ -2,7 +2,7 @@
 #
 # LibreOffice 4 Installer v1.0
 # Dieses Skript installiert LibreOffice 4 - auch für eine Aktualisierung geeignet!
-# © 2013 Andreas Bielawski (http://wiidatabase.de/)
+# © 2013-2014 Andreas Bielawski (http://wiidatabase.de/)
 # Veröffentlicht unter der GPL v3
 # Benötigte Pakete: tar, libnotify-bin
 #
@@ -28,9 +28,17 @@ LOHELPFOLDER="LibreOffice*_4.*_Linux_*_deb_helppack_de/DEBS" # wird für den Che
 INSTALLHELP="n" # Hilfe installieren? (j, n)
 
 ### AB HIER NICHTS MEHR ANPASSEN! ###
+CURRENTVER="1.0"
 
 # Wechsle ins Verzeichnis - Unentpackte .tar.gz nur dort!
 cd $PFAD
+
+echo ""
+echo "		LibreOffice 4 Installer v$CURRENTVER"
+echo "		https://github.com/Brawl345/install-libreoffice/"
+echo ""
+
+
 
 # Prüft, ob die Installationsdaten wirklich existieren.
 # Prüfen wir nicht, gibt es dpkg Abhängigkeitsfehler und der User hat den Salat...
@@ -41,7 +49,8 @@ if [ "$INSTALLHELP" == "j" ];
 	       echo "Hilfedatei existiert - Weiter..."
 		else
 	       echo "FEHLER! Hilfedatei existiert nicht"
-		   echo "Downloade sie bitte von http://de.libreoffice.org/download/"
+	       echo "Downloade sie bitte von http://de.libreoffice.org/download/"
+	       echo "Alternativ, setze \$INSTALLHELP im Skript auf 'n' "
 	       exit
 		fi
 fi
