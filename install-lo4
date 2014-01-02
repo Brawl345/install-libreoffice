@@ -38,8 +38,6 @@ echo "		LibreOffice 4 Installer v$CURRENTVER"
 echo "		https://github.com/Brawl345/install-libreoffice/"
 echo ""
 
-
-
 # Prüft, ob die Installationsdaten wirklich existieren.
 # Prüfen wir nicht, gibt es dpkg Abhängigkeitsfehler und der User hat den Salat...
 if [ "$INSTALLHELP" == "j" ];
@@ -73,7 +71,7 @@ else
    exit
 fi
  
-
+ 
 # Entpacken....
 echo ""
 echo "Entpacke LibreOffice... Dies dauert etwas..."
