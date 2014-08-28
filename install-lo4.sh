@@ -28,31 +28,16 @@ LOHELPFOLDER="LibreOffice*_4.*_Linux_*_deb_helppack_de/DEBS" # wird für den Che
 INSTALLHELP="n" # Hilfe installieren? (j, n)
 
 ### AB HIER NICHTS MEHR ANPASSEN! ###
-CURRENTVER="1.0"
+CURRENTVER="1.0.1"
 
 # Wechsle ins Verzeichnis - Unentpackte .tar.gz nur dort!
 cd $PFAD
-
 echo ""
 echo "		LibreOffice 4 Installer v$CURRENTVER"
 echo "		https://github.com/Brawl345/install-libreoffice/"
 echo ""
 
-# Prüft, ob die Installationsdaten wirklich existieren.
-# Prüfen wir nicht, gibt es dpkg Abhängigkeitsfehler und der User hat den Salat...
-if [ "$INSTALLHELP" == "j" ];
-	then
-		if [ -f $LOHELP ];
-		then
-	       echo "Hilfedatei existiert - Weiter..."
-		else
-	       echo "FEHLER! Hilfedatei existiert nicht"
-	       echo "Downloade sie bitte von http://de.libreoffice.org/download/"
-	       echo "Alternativ, setze \$INSTALLHELP im Skript auf 'n' "
-	       exit
-		fi
-fi
-	   
+# Prüft, ob die Installationsdaten wirklich existieren.	   
 if [ -f $LOINSTALL ];
 then
    echo "Installationsdatei existiert - Fahre fort..."
@@ -70,7 +55,19 @@ else
    echo "Downloade sie bitte von http://de.libreoffice.org/download/"
    exit
 fi
- 
+
+if [ "$INSTALLHELP" == "j" ];
+	then
+		if [ -f $LOHELP ];
+		then
+	       echo "Hilfedatei existiert - Weiter..."
+		else
+	       echo "FEHLER! Hilfedatei existiert nicht"
+	       echo "Downloade sie bitte von http://de.libreoffice.org/download/"
+	       echo "Alternativ, setze \$INSTALLHELP im Skript auf 'n' "
+	       exit
+		fi
+fi
  
 # Entpacken....
 echo ""
@@ -90,13 +87,6 @@ echo "Schließe vorher LibreOffice (falls es offen ist)! "
 echo ""
 notify-send -t 8000 -i /usr/share/icons/gnome/32x32/status/dialog-warning.png "LibreOffice Installer" "'LibreOffice Installer' benötigt dein Root-Passwort. Ignoriere diese Meldung, falls du das Passwort in dieser Shell bereits eingegeben hast."
 sudo dpkg -i $LOINSTALLFOLDER/*.deb
-
-# Desktop-Integration
-# Wird seit v4.1 nicht mehr benötigt
-# echo ""
-# echo "Installiere Desktop-Integrationen..."
-# echo ""
-# sudo dpkg -i $LOINSTALLFOLDER/desktop-integration/*.deb
 
 # Deutsches Sprachpaket
 echo ""
